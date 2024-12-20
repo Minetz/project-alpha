@@ -1,6 +1,4 @@
-import tomllib
+import streamlit as st
 
 def load_api_key():
-    with open("./src/config/config.toml", "rb") as f:
-        config = tomllib.load(f)
-    return config["openai"]["api_key"]
+    return st.secrets["openai"]["api_key"]
