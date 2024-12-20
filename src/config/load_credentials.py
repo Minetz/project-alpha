@@ -1,10 +1,6 @@
-import tomllib
-import os
+import streamlit as st
 
 def load_credentials():
-    config_path = os.path.join(os.path.dirname(__file__), ".streamlit/secrets.toml")
-    with open(config_path, "rb") as f:
-        config = tomllib.load(f)
-    username = config["credentials"]["username"]
-    password = config["credentials"]["password"]
+    username = st.secrets["credentials"]["username"]
+    password = st.secrets["credentials"]["password"]
     return username, password
