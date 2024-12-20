@@ -11,3 +11,11 @@
 
 # Ignore config
 src/config/config.toml
+
+# Pycache
+**/__pycache__/
+
+# Optionally exclude compiled Python files
+*.pyc
+*.pyo
+*.pyd

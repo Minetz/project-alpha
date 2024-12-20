@@ -1,15 +1,15 @@
 def repair_transcription(client, transcript_text):
-    prompt = f"""Data la seguente trascrizione, ripara pezzi di conversazione che secondo te sono stati trascritti in modo sbagliato.
-    Annota tutte le modifiche aggiungendo il tag <correzione> prima e dopo <\correzione> la correzione. 
-    Se la conversazione non è separata tra interlocutori, aggiungi <terapeuta> e <paziente>.
-    Trascrizione: {transcript_text}"""
-
+    prompt = """Data la seguente trascrizione, ripara pezzi di conversazione che secondo te sono stati trascritti in modo sbagliato.
+    Annota tutte le modifiche aggiungendo ** prima e dopo ** la correzione. 
+    Se la conversazione non è separata tra interlocutori, aggiungi <terapeuta> e <paziente>. Associa al terapueta allo psicologo giudicando dal contenuto della conversazione.
+    Tutta la conversazione deve essere riportata, non perdere messaggi iniziali o finali. Puo iniziare sia il paziente che il terapeuta."""
     gpt_response = client.chat.completions.create(
         model="gpt-4o",
         messages=[
-            {"role": "system", "content": "Se un correttore di trascrizione esperto in sedute psicologiche."},
-            {"role": "user", "content": prompt}
+            {"role": "system", "content": prompt},
+            {"role": "user", "content": transcript_text}
         ]
     )
 
-    return gpt_response.choices[0].message.content
+    response = gpt_response.choices[0].message.content
+    return response

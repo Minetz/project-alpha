@@ -13,7 +13,7 @@ def transcribe_audio(client, audio_bytes):
             file=f,
             response_format="verbose_json",
             timestamp_granularities=["word"],
-            prompt="Trascrivi l'audio in Italiano, separando gli interlocutori con <persona_uno> e <persona_due>."
+            prompt="Trascrivi in Italiano. Trattiamo una seduta di terapia tra un terapeuta e un paziente."
         )
 
     os.remove(audio_temp_path)
