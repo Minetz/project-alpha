@@ -1,4 +1,5 @@
 import streamlit as st
+
 from config.auth import authenticate
 from openai_client import get_client
 from transcription import transcribe_audio
